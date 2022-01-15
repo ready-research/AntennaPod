@@ -12,6 +12,7 @@ import java.io.Reader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.XMLConstants;
 
 import de.danoeh.antennapod.model.feed.Feed;
 
@@ -24,6 +25,7 @@ public class FeedHandler {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setNamespaceAware(true);
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         SAXParser saxParser = factory.newSAXParser();
         File file = new File(feed.getFile_url());
         Reader inputStreamReader = new XmlStreamReader(file);
